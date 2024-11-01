@@ -1,5 +1,6 @@
 const { error } = require("console");
 const fs = require("fs");
+const http = require("http");
 
 // Blocking, synchronous way
 
@@ -12,19 +13,33 @@ const fs = require("fs");
 // console.log("File written");
 
 // Non blocking
-fs.readFile("./txt/start.txt", "utf-8", (error, data) => {
-  console.log(data);
+// fs.readFile("./txt/start.txt", "utf-8", (error, data) => {
+//   if (error) return console.log(`${error.message}🙂`);
 
-  fs.readFile(`./txt/${data}.txt`, "utf-8", (error, data4) => {
-    console.log(data4);
-    fs.readFile("./txt/append.txt", "utf-8", (error, data2) => {
-      console.log(data2);
+//   console.log(data);
 
-      fs.writeFile("./txt/final.txt", `${data}\n${data2}`, "utf-8", (err) => {
-        console.log("Your file has been written😄");
-      });
-    });
-  });
+//   fs.readFile(`./txt/${data}.txt`, "utf-8", (error, data4) => {
+//     console.log(data4);
+//     fs.readFile("./txt/append.txt", "utf-8", (error, data2) => {
+//       console.log(data2);
+
+//       fs.writeFile("./txt/final.txt", `${data}\n${data2}`, "utf-8", (err) => {
+//         console.log("Your file has been written😄");
+//       });
+//     });
+//   });
+// });
+
+// console.log("Will read file");
+
+///////////////////////////////////////////////////////////////////////
+//SERVER
+
+const server = http.createServer((req, res) => {
+  // console.log(req);
+  res.end("Hello from the server!");
 });
 
-console.log("Will read file");
+server.listen(8000, "127.0.0.1", () => {
+  console.log("Listening to requests on port 8000");
+});
