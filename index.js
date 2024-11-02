@@ -4,19 +4,9 @@ const http = require("http");
 const url = require("url");
 const replaceTempCard = require("./modules/replaceTemplateCard");
 
-// Blocking, synchronous way
+const slugify = require("slugify");
 
-// const textInput = fs.readFileSync("./txt/input.txt", "utf-8");
-// console.log(textInput);
-
-// const textOutput = `This is what we know about the avocoado: ${textInput}.\nCreated on ${Date.now()}`;
-// fs.writeFileSync("./txt/output.txt", textOutput);
-
-// console.log("File written");
-
-// Non blocking
-// fs.readFile("./txt/start.txt", "utf-8", (error, data) => {
-//   if (error) return console.log(`${error.message}🙂`);
+// console.log("this is Slugify", slugify);
 
 //   console.log(data);
 
