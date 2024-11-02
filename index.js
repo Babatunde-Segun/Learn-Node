@@ -72,6 +72,11 @@ const dataObj = JSON.parse(data);
 const server = http.createServer((req, res) => {
   // console.log(req.url);
 
+  // console.log(req.url);
+
+  console.log("this is for url parse", url.parse(req.url, true));
+  const { query, pathname } = url.parse(req.url, true);
+  console.log("looking for query", query.id);
   const pathName = req.url;
 
   // Overview page
@@ -87,8 +92,13 @@ const server = http.createServer((req, res) => {
   }
 
   // Product page
-  else if (pathName === "/product") {
-    res.end("This is the product");
+  else if (pathName === `/product?id=${query.id}`) {
+    res.writeHead(200, { "Content-type": "text/html" });
+    // console.log(query);
+    const product = dataObj[query.id];
+    // console.log(product);
+    const output = replaceTempCard(tempProduct, product);
+    res.end(output);
   }
 
   // API
@@ -100,7 +110,7 @@ const server = http.createServer((req, res) => {
       "Content-type": "text/html",
       "my-own-header": "hello-world",
     });
-    res.end("<h1 style={{backgroundColor: 'red'}}>Page not found!</h1>");
+    res.end(`<h1 style="background-color: red;" >Page not found!</h1>`);
   }
   // res.end("Hello from the server!");
 });
