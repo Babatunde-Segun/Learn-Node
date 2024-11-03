@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
     console.log(dataParse);
     res.writeHead(200, { "Content-type": "text/html" });
     const dataObj = dataParse.map((el) => replaceTempCard(card, el)).join("");
-    console.log("this is dataObj", dataObj);
+    // console.log("this is dataObj", dataObj);
     const output = tempOverview.replace("{%PRODUCT_CARDS%}", dataObj);
     res.end(output);
   } else {
