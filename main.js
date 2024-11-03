@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
     // console.log("Testing");
     res.end("Hello world");
   } else if (pathName === "/card") {
-    console.log(dataParse);
+    // console.log(dataParse);
     res.writeHead(200, { "Content-type": "text/html" });
     const dataObj = dataParse.map((el) => replaceTempCard(card, el)).join("");
     // console.log("this is dataObj", dataObj);
