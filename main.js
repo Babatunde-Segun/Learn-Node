@@ -27,6 +27,8 @@ const replaceTempCard = (temp, product) => {
 };
 // console.log(card);
 
+// TODO BUG FIXME;
+
 const server = http.createServer((req, res) => {
   const pathName = req.url;
 
